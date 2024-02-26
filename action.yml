@@ -18,6 +18,9 @@ inputs:
   password:
     description: "Password of the registry account"
     required: true
+  target:
+    description: "Which target of the image to build"
+    required: false
 runs:
   using: composite
   steps:
@@ -41,3 +44,4 @@ runs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+        target: ${{inputs.target}}
